@@ -1,19 +1,18 @@
+import { getCellElement } from "../utils/get-cell-element.js";
+
 class ColorObserver {
-  notify(gameState) {
-    const { currentRowPosition, currentCellPosition } = gameState;
+  notify(game) {
+    const { currentRowPosition, currentCellPosition } = game.state;
     if (currentRowPosition === 1 && currentCellPosition === 1) return;
+
     let previusCell;
-    if (currentCellPosition === 1 && currentRowPosition > 1) {
-      previusCell = gameState.getCell(currentRowPosition - 1, 4);
+    if (currentCellPosition === 1) {
+      previusCell = game.getCell(currentRowPosition - 1, 4);
     } else {
-      previusCell = gameState.getCell(
-        currentRowPosition,
-        currentCellPosition - 1
-      );
+      previusCell = game.getCell(currentRowPosition, currentCellPosition - 1);
     }
-    const previusCellElement = document.getElementById(
-      `row-${previusCell.rowPosition}-cell-${previusCell.position}`
-    );
+
+    const previusCellElement = getCellElement(previusCell);
     previusCellElement.style.backgroundColor = previusCell.color;
     previusCellElement.style.borderColor = "black";
   }

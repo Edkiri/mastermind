@@ -1,20 +1,11 @@
+import { getCellElement } from "../utils/get-cell-element.js";
+
 class CurrentCellObserver {
-  notify(gameState) {
-    const { currentRowPosition, currentCellPosition } = gameState;
-    const currentCell = gameState.getCell(
-      currentRowPosition,
-      currentCellPosition
-    );
-    const currentCellElement = document.getElementById(
-      `row-${currentCell.rowPosition}-cell-${currentCell.position}`
-    );
-    const nextCellElement = document.getElementById(
-      `row-${currentCell.rowPosition}-cell-${currentCell.position + 1}`
-    );
+  notify(game) {
+    const { currentRowPosition, currentCellPosition } = game.state;
+    const currentCell = game.getCell(currentRowPosition, currentCellPosition);
+    const currentCellElement = getCellElement(currentCell);
     currentCellElement.style.borderColor = "yellow";
-    if(nextCellElement) {
-      nextCellElement.style.borderColor = "black";
-    }
   }
 }
 

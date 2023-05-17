@@ -13,7 +13,7 @@ export function renderBoard(boardElement, gameState) {
     hiddenRowElement.appendChild(hiddenCellElement);
   }
   boardElement.appendChild(hiddenRowElement);
-  const { rows } = gameState;
+  const { rows } = gameState.state;
   // Por cada fila del estado: Crea un elemento div y agrega la clase 'row' y un identificador único.
   rows.forEach((row) => {
     const rowElement = document.createElement("div");

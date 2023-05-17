@@ -3,22 +3,25 @@ import RowControl from "./board/row-control.js";
 import { renderBoard } from "./board/render-board.js";
 import ColorObserver from "./board/observers/color.observer.js";
 import CurrentCellObserver from "./board/observers/current-cell.observer.js";
+import { createInitialState } from "./game-state/create-initial-state.js";
 
 const boardElement = document.getElementById("board");
 
 // TODO: User must be able to choose the difficulty
-const gameState = new GameState("hard");
-renderBoard(boardElement, gameState);
+const initialState = createInitialState("easy");
+const game = new GameState(initialState);
+console.log("GAME", game);
+renderBoard(boardElement, game);
 
 const colorObserver = new ColorObserver();
-gameState.subscribe(colorObserver);
+game.subscribe(colorObserver);
 
 const currentCellObserver = new CurrentCellObserver();
-gameState.subscribe(currentCellObserver);
+game.subscribe(currentCellObserver);
 
 // TODO: Add previusCellObserver to remove the last cell
 
-gameState.start();
+game.start();
 
 // TODO: User must be able to choose colors
 const colors = ["red", "green", "blue", "orange"];
@@ -26,7 +29,7 @@ const rowControl = new RowControl(colors);
 rowControl.controlCells.forEach((cellControl) => {
   cellControl.addEventListener("click", () => {
     const color = cellControl.style.backgroundColor;
-    gameState.addColor(color);
+    game.addColor(color);
   });
 });
 rowControl.render(boardElement);
