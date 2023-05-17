@@ -9,10 +9,15 @@ class Row {
   generateCells() {
     const cells = [];
     for (let i = 1; i <= 4; i++) {
-      const cell = new Cell(i);
+      const cell = new Cell(this.position, i);
       cells.push(cell);
     }
     return cells;
+  }
+
+  getCell(position) {
+    const cell = this.cells.find((cell) => cell.position === position);
+    return cell;
   }
 }
 
