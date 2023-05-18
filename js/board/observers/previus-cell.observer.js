@@ -1,6 +1,6 @@
 import { getCellElement } from "../utils/get-cell-element.js";
 
-class ColorObserver {
+class PreviusCellObserver {
   notify(game) {
     const previusCell = game.getPreviusCell();
     if (!previusCell) return;
@@ -10,4 +10,4 @@ class ColorObserver {
   }
 }
 
-export default ColorObserver;
+export default PreviusCellObserver;

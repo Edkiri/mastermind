@@ -1,8 +1,9 @@
 import GameState from "./game-state/game-state.js";
 import RowControl from "./board/row-control.js";
 import { renderBoard } from "./board/render-board.js";
-import ColorObserver from "./board/observers/color.observer.js";
+import PreviusCellObserver from "./board/observers/previus-cell.observer.js";
 import CurrentCellObserver from "./board/observers/current-cell.observer.js";
+import NextCellObserver from "./board/observers/next-cell.observer.js";
 import { createInitialState } from "./game-state/create-initial-state.js";
 
 const boardElement = document.getElementById("board");
@@ -13,11 +14,14 @@ const game = new GameState(initialState);
 console.log("GAME", game);
 renderBoard(boardElement, game);
 
-const colorObserver = new ColorObserver();
-game.subscribe(colorObserver);
+const previusCellObserver = new PreviusCellObserver();
+game.subscribe(previusCellObserver);
 
 const currentCellObserver = new CurrentCellObserver();
 game.subscribe(currentCellObserver);
+
+const nextCellObserver = new NextCellObserver();
+game.subscribe(nextCellObserver);
 
 // TODO: Add previusCellObserver to remove the last cell
 
@@ -31,5 +35,8 @@ rowControl.controlCells.forEach((cellControl) => {
     const color = cellControl.style.backgroundColor;
     game.addColor(color);
   });
+});
+rowControl.cancelButton.addEventListener("click", () => {
+  game.removeColor();
 });
 rowControl.render(boardElement);
