@@ -2,7 +2,7 @@ class RowControl {
   constructor(colors) {
     this.colors = colors;
     this.controlCells = this.createControlCells();
-    this.cancelButton = this.createCancelButton();
+    this.removeButton = this.createRemoveButton();
     this.checkButton = this.createCheckButton();
   }
 
@@ -18,12 +18,12 @@ class RowControl {
     return controlCells;
   }
 
-  createCancelButton() {
-    const cancelButton = document.createElement("button");
-    cancelButton.type = "button";
-    cancelButton.textContent = "Remove";
-    cancelButton.classList.add("cancel-button");
-    return cancelButton;
+  createRemoveButton() {
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "Remove";
+    removeButton.classList.add("remove-button");
+    return removeButton;
   }
 
   createCheckButton() {
@@ -46,7 +46,7 @@ class RowControl {
 
     const controlGameContainer = document.createElement("div");
     controlGameContainer.classList.add("control-game-container");
-    controlGameContainer.appendChild(this.cancelButton);
+    controlGameContainer.appendChild(this.removeButton);
     controlGameContainer.appendChild(this.checkButton);
 
     controlContainer.appendChild(controlColorContainer);

@@ -1,7 +1,7 @@
 import { DEFAULT_COLOR } from "../lib/constants.js";
 import Subject from "../lib/subject.js";
 
-class Game extends Subject {
+class MastermindGame extends Subject {
   constructor(state) {
     super();
     this.state = state;
@@ -62,4 +62,4 @@ class Game extends Subject {
   }
 }
 
-export default Game;
+export default MastermindGame;
