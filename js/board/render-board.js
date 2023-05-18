@@ -29,6 +29,13 @@ export function renderBoard(boardElement, gameState) {
       // Renderiza todas las celdas dentro de la fila actual.
       rowElement.appendChild(cellElement);
     });
+    for (let i = 1; i <= 4; i++) {
+      const clueContainer = document.createElement("div");
+      clueContainer.classList.add("clue-contianer");
+      clueContainer.id = `clue-container-${i}`;
+      // Rendiriza
+      rowElement.appendChild(clueContainer);
+    }
     // Renderiza todas las filas dentro del elemento 'boardElement'.
     boardElement.appendChild(rowElement);
   });
