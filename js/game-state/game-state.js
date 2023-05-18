@@ -25,10 +25,32 @@ class Game extends Subject {
     super.notify(this);
   }
 
+  removeColor() {
+    this.state.currentCellPosition -= 1;
+  }
+
   getCell(rowPosition, cellPosition) {
     const row = this.state.rows.find((row) => row.position === rowPosition);
     const cell = row.cells.find((cell) => cell.position === cellPosition);
     return cell;
+  }
+
+  getPreviusCell() {
+    if (
+      this.state.currentRowPosition === 1 &&
+      this.state.currentCellPosition === 1
+    )
+      return;
+    let previusCell;
+    if (this.state.currentCellPosition === 1) {
+      previusCell = this.getCell(this.state.currentRowPosition - 1, 4);
+    } else {
+      previusCell = this.getCell(
+        this.state.currentRowPosition,
+        this.state.currentCellPosition - 1
+      );
+    }
+    return previusCell;
   }
 }
 

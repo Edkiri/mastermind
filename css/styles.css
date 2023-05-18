@@ -38,11 +38,8 @@ main {
   border: 1px solid lightcoral;
   border-radius: 4px;
 }
-.row, .row-control {
+.row {
   display: flex;
-}
-.row-control {
-  margin-top: 20px;
 }
 .cell {
   width: 35px;
@@ -62,4 +59,18 @@ main {
 }
 .control-cell {
   cursor: pointer;
+}
+.control-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+.control-color-container {
+  margin-bottom: 10px;
+}
+.control-game-container > button {
+  margin: 0 6px;
+  padding: 4px 8px;
 }
