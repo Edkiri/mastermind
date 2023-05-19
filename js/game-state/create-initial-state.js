@@ -64,7 +64,6 @@ function createInitialClues(rowPosition) {
   const clues = [];
   for (let i = 1; i <= 4; i++) {
     const clue = {
-      rowPosition,
       color: DEFAULT_COLOR,
     };
     clues.push(clue);

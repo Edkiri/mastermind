@@ -1,6 +1,6 @@
 import MastermindGame from "./game-state/mastermind-game.js";
 import RowControl from "./board/row-control.js";
-import { renderBoard } from "./board/render-board.js";
+import RenderBoard from "./board/renders/board-render.js";
 import PreviusCellObserver from "./board/observers/previus-cell.observer.js";
 import CurrentCellObserver from "./board/observers/current-cell.observer.js";
 import NextCellObserver from "./board/observers/next-cell.observer.js";
@@ -8,14 +8,16 @@ import { createInitialState } from "./game-state/create-initial-state.js";
 
 const boardElement = document.getElementById("board");
 
-// TODO: User must be able to choose difficulty
-// TODO: User must be able to choose colors
+// TODO: User must be able to choose colors.
+// TODO: User must be able to choose difficulty.
 const colors = ["red", "green", "blue", "orange"];
 const difficulty = "easy";
 
 const initialState = createInitialState(difficulty, colors);
 const game = new MastermindGame(initialState);
-renderBoard(boardElement, game);
+
+const renderBoard = new RenderBoard(game.state);
+renderBoard.render(boardElement);
 
 const currentCellObserver = new CurrentCellObserver();
 const previusCellObserver = new PreviusCellObserver();
@@ -25,8 +27,6 @@ game.subscribe(previusCellObserver);
 game.subscribe(nextCellObserver);
 
 game.start();
-
-console.log(game.state);
 
 const rowControl = new RowControl(colors);
 rowControl.controlCells.forEach((cellControl) => {
