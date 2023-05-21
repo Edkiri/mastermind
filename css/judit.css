@@ -1,0 +1,144 @@
+
+
+body {
+  background-color: #141414;
+  font-size: 0.95rem;
+}
+
+.mm-display {
+  height: 100vh;
+}
+
+.mm-display-second {
+  height: 70vh;
+}
+
+.mm-nav {
+  background-color: var(--color-second);
+}
+
+.mm-nav-text {
+  font-size: 0.95rem;
+}
+
+.mm-button {
+  font-family: 'Roboto Mono', monospace;
+  border-color: var(--color-third);
+}
+
+.mm-button:hover {
+  background-color: var(--color-second);
+  border: 1px solid transparent;
+}
+
+.mm-instructions{
+  border: solid var(--color-third) 0.05rem;
+  border-radius: 0.5rem;
+}
+
+.mm-myPic {
+  height: 15rem;
+  width: 15rem;
+}
+
+.supertitle {
+  font-size: 5rem;
+}
+
+.mm-alert {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+}
+
+.mm-hidden {
+  display: none;
+}
+
+.title-alert {
+  font-size: 1.3rem;
+}
+
+.bton-alert {
+  font-size: 0.8rem;
+  letter-spacing: 0;
+}
+
+.inst-list {
+  border-color: var(--color-third);
+
+}
+
+input[type="color"] {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+} 
+
+.circleColor, .circleColor1 {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: solid var(--color-third) 0.05rem; 
+}
+
+.numberVsc {
+  color:#6c6c6c;
+
+}
+
+
+
+/* clases para los colores de la tipo */
+
+.yellow {
+  color: var(--color-yellow-2);
+}
+
+.yellowtext {
+  color: var(--color-yellow);
+}
+
+.comment {
+  color: var(--color-comment);
+}
+
+.keywords {
+  color: var(--color-keywords);
+}
+
+.blue {
+  color: var(--color-blue);
+}
+
+.string {
+  color: var(--color-string);
+}
+
+.sea {
+  color: var(--color-sea);
+}
+
+.almostWhite {
+  color: var(--color-almostwhite);
+}
+
+
+
+/* gameboard */
+
+.circleGrid {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 50%;
+  border: solid var(--color-third) 0.05rem; 
+}
+
+.grid-circles {
+  height: 4rem;
+  width: 4rem;
+}
+
+.blueSelection {
+  color: var(--color-selection);
+}

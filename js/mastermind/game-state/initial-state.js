@@ -1,4 +1,4 @@
-import { DEFAULT_COLOR } from "../lib/constants.js";
+import { levelOptions } from "./level-options.js";
 
 export function createInitialState(difficulty, colors) {
   const secretRow = createSecretRow(colors);
@@ -33,14 +33,14 @@ function createSecretCells(colors) {
   return secretCells;
 }
 
-// TODO: generate rows based on difficulty
 function createInitialRows(difficulty) {
   const rows = [];
-  for (let i = 10; i >= 1; i--) {
+  const rowQuantity =  levelOptions[difficulty].maxAttempts;
+  for (let i = rowQuantity; i >= 1; i--) {
     const row = {
       position: i,
       cells: createInitialCells(i),
-      clues: createInitialClues(i),
+      clues: createInitialClues(),
     };
     rows.push(row);
   }
@@ -53,18 +53,18 @@ function createInitialCells(rowPosition) {
     const cell = {
       rowPosition,
       position: i,
-      color: DEFAULT_COLOR,
+      color: "#3f3f3f",
     };
     cells.push(cell);
   }
   return cells;
 }
 
-function createInitialClues(rowPosition) {
+function createInitialClues() {
   const clues = [];
   for (let i = 1; i <= 4; i++) {
     const clue = {
-      color: DEFAULT_COLOR,
+      color: "#3f3f3f",
     };
     clues.push(clue);
   }

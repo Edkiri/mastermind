@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastermind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  
+  <main>
+
+    <div class="mastermind-container">
+
+      <div class="control">
+        <div class="secret-list" id="secret-list"></div>
+        <div class="bubbles-list" id="bubbles-list"></div>
+        <div class="control-option-container">
+          <button type="button" class="remove-button mm-button" id="remove-button">Remove</button>
+          <button type="button" class="check-button mm-button" id="check-button">Check</button>
+        </div>
+      </div>
+
+      <div class="board" id="board"></div>
+
+    </div>
+
+  </main>
+
+
+  <script type="module" src="../js/mastermind/game.js"></script>
+</body>
+</html>
