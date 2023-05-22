@@ -2,37 +2,49 @@
 const username = sessionStorage.getItem("username");
 if (!username) window.location = "../index.html";
 
+// Agraga el username al título.
 const usernameSpan = document.getElementById("username-span");
 usernameSpan.textContent = username;
 
-// Una lista con los botones de los niveles
+// 'picker-section' es el id de la sección que contiene a los color picckers. 
+// Al iniciar tiene `display: none;` en css. Solo después de que el usuario haya elejido la 
+// dificultad, se le dará `display: 'flex';` via js para hacerlo visible, y se rendetizaran
+// los colors pickers, según la dificultad.
 const pickersSection = document.getElementById("picker-section");
-pickersSection.style.display = "none";
 
-// Recorre la lista.
-// A cada botón le mete addEventListener con el evento click y una funcion anonima.
-// Dentro de la función anónima, lee el id de cada boton;
-// La última letra del id es el numero 4, 5, 6 y según esos número crea las bubbles y los pickers
-// .split("-") nos devolveria => ["levelOne", "4"] Luego a ese ["levelOne", "4"][1] y te traes el número
+// 'level-section' es el id de la sección que contiene los botones para que el usuario elija la dificultad.
+// Después que el usuario elija dificultad, esta sección se esconde, dandole un `display: none;`
+// y renderiza la 'picker-section', dandole `display: 'flex';`.
+const levelSection = document.getElementById("level-section");
 
+// Trae una lista con los 3 botones para elejir la dificultad; todos tienen la clase 'level-button'.
 const levelButtons = document.querySelectorAll(".level-button");
-import { levelOptions } from "./mastermind/game-state/level-options.js";
-const difficultySpan = document.getElementById("difficulty-span");
 
+import { levelOptions } from "./mastermind/game-state/level-options.js";
+// Recorre la lista con los botones usando un `.forEach()` para agregarle un `addEventListerner` a cada uno.
 levelButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    // Cada botón tiene un id único para leer la dificultad que elijió el usuario.
+    // Estos ids son: 'level-easy', 'level-hard' y 'level-tryhard'.
     const buttonId = button.id;
     const difficulty = buttonId.split("-")[1];
-    createPickers(levelOptions[difficulty].colors);
-    document.getElementById("level-section").style.display = "none";
-    pickersSection.style.display = "flex";
+
+    const { colorsQuantity } = levelOptions[difficulty];
+    createPickers(colorsQuantity);
+
+    const difficultySpan = document.getElementById("difficulty-span");
     difficultySpan.textContent = difficulty;
     window.sessionStorage.setItem("difficulty", difficulty);
+    
+    levelSection.style.display = "none";
+    pickersSection.style.display = "flex";
   });
 });
 
-const pickersContainer = document.getElementById("pickers-list");
+// Estos son los colores por defecto previamente filtrados por el equipo de diseño.
 const DEFAULT_COLORS = ["#65e66e","#ffe770","#85e0ff","#ff8af5","#ff9924","#67cccc"];
+
+const pickersContainer = document.getElementById("pickers-list");
 function createPickers(quantity) {
   for (let i = 1; i <= quantity; i++) {
     const picker = document.createElement("input");
@@ -40,10 +52,6 @@ function createPickers(quantity) {
     picker.id = `picker-${i}`;
     picker.value = DEFAULT_COLORS[i - 1];
     pickersContainer.appendChild(picker);
-    picker.oninput = () => {
-      const currentBubble = document.getElementById(`bubble-${i}`);
-      currentBubble.style.backgroundColor = picker.value;
-    };
   }
 }
 

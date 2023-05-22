@@ -1,4 +1,9 @@
-import { createHTMLElement } from "./utils/functions.js";
+import { createHTMLElement } from "../utils/functions.js";
+
+// Esta función renderiza todas las filas 'rows' y celdas 'cells' del tablero 'board'.
+// También renderiza las bolas blancas y negras del resultado de la evalucación 'clues'.
+
+const boardElement = document.getElementById("board");
 
 export default function renderRows(rows) {
   rows.forEach((row) => {
@@ -26,7 +31,7 @@ export default function renderRows(rows) {
     });
     rowElement.appendChild(cluesElement);
     
-    const boardElement = document.getElementById("board");
+    
     boardElement.appendChild(rowElement);
     
   });

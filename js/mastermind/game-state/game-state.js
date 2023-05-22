@@ -33,33 +33,43 @@ class GameState extends Subject {
   checkSecret() {
     if (this.state.currentCellPosition !== 5) return;
     const { rows } = this.state;
-    const currentRow = rows.find(
+    const currentCells = rows.find(
       (row) => row.position === this.state.currentRowPosition
-    );
-    const secretCells = this.state.secretRow.secretCells;
-    console.log("secretCells", secretCells);
-    let secretColors = [];
-    secretCells.forEach((secretCell) => {
-      const existingColor = secretColors.find(
-        (secretColor) => secretCell.color === secretColor.color
-      );
-      if (existingColor) {
-        existingColor.quantity += 1;
-      } else {
-        secretColors.push({ color: secretCell.color, quantity: 1 });
-      }
+    ).cells;
+    const currentCellsAux = currentCells.map((cell) => {
+      return { ...cell, checked: false };
     });
-    console.log("SECRET COLORS", secretColors);
-    const clues = [];
-    currentRow.cells.forEach((cell) => {
-      if (cell.color === secretCells[cell.position - 1].color) {
-        clues.push("black");
-        return;
-      } else if (true) {
-        clues.push("white");
-      }
+    const secretCellsAux = this.state.secretRow.secretCells.map((cell) => {
+      return { ...cell, checked: false };
     });
-    console.log(clues);
+    const balls = [];
+    console.log(secretCellsAux);
+    currentCellsAux.forEach((cell) => {
+      secretCellsAux.forEach((secretCell) => {
+        if (
+          cell.color === secretCell.color &&
+          cell.position === secretCell.position
+        ) {
+          balls.push("black");
+          secretCell.checked = true;
+          cell.checked = true;
+        }
+      });
+    });
+    currentCellsAux.forEach((cell) => {
+      secretCellsAux.forEach((secretCell) => {
+        if (
+          cell.color === secretCell.color &&
+          !secretCell.checked &&
+          !cell.checked
+        ) {
+          balls.push("white");
+          secretCell.checked = true;
+          cell.checked = true;
+        }
+      });
+    });
+    console.log(balls);
   }
 
   getCell(rowPosition, cellPosition) {

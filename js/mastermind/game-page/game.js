@@ -1,27 +1,29 @@
-import GameState from "./game-state/game-state.js";
-import { createInitialState } from "./game-state/initial-state.js";
-import { createHTMLElement } from "./utils/functions.js";
+import GameState from "../game-state/game-state.js";
+import { createInitialState } from "../game-state/initial-state.js";
+import { createHTMLElement } from "../utils/functions.js";
 import renderRows from "./render-rows.js";
 
 import {
   PreviusCellObserver,
   CurrentCellObserver,
   NextCellObserver,
-} from "./game-state/observers.js";
+} from "./observers.js";
 
-const colors = JSON.parse(sessionStorage.getItem("colors"));
-console.log(colors);
+// const colors = JSON.parse(sessionStorage.getItem("colors"));
+const colors = ["red", "green", "blue", "yellow", "purple"];
 const difficulty = sessionStorage.getItem("difficulty");
-// if (!colors.length || !difficulty) window.location = "../pages/settings.html";
+if (!colors.length || !difficulty) window.location = "../pages/settings.html";
 
 // Crea el estado inicial.
 // Este guarda las 'rows' del tablero según el nivel de dificultad.
 // También la posición de las celdas y su color.
 const initialState = createInitialState(difficulty, colors);
+
+// Instancia una clase GameState; esta extiende de 'Subject' para aplicar el patrón de diseño observador.
 const game = new GameState(initialState);
 
 // Renderiza las filas 'rows' del tablero definidas en el estado inicial.
-// Itera por cada 'row' del estado inicial y crea la row en el html. Busca el id="board".
+// Itera por cada 'row' del estado inicial y crea la row en el html. Busca el id="board" en el html.
 renderRows(game.state.rows);
 
 // Render Bubbles

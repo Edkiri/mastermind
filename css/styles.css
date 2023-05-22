@@ -181,7 +181,7 @@ main {
   cursor: pointer;
 }
 .picker-section {
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-bottom: 150px;
   align-items: center;
