@@ -34,3 +34,19 @@ export class PreviusCellObserver {
     previusCellElement.style.borderColor = "black";
   }
 }
+export class RowObserver {
+  constructor() {
+    this.currentRowPosition = 1;
+  }
+  notify(game) {
+    if (this.currentRowPosition < game.state.currentRowPosition) {
+      const currentRow = game.state.rows.find((row) => row.position === this.currentRowPosition);
+      const { clues } = currentRow;
+      const cluesElements = document.querySelectorAll(`#clues-${this.currentRowPosition} > div`);
+      for(let i = 0; i < clues.length; i++) {
+        cluesElements[i].style.backgroundColor = clues[i].color || "#3f3f3f";
+      }
+      this.currentRowPosition += 1;
+    }
+  }
+}

@@ -12,3 +12,39 @@ export function getCellElement(cell) {
     `row-${cell.rowPosition}-cell-${cell.position}`
   );
 }
+
+export function checkClueBalls(currentCells, secretCells) {
+  const currentCellsAux = currentCells.map((cell) => {
+    return { ...cell, checked: false };
+  });
+  const secretCellsAux = secretCells.map((cell) => {
+    return { ...cell, checked: false };
+  });
+  const clueBalls = [];
+  currentCellsAux.forEach((cell) => {
+    secretCellsAux.forEach((secretCell) => {
+      if (
+        cell.color === secretCell.color &&
+        cell.position === secretCell.position
+      ) {
+        clueBalls.push("black");
+        secretCell.checked = true;
+        cell.checked = true;
+      }
+    });
+  });
+  currentCellsAux.forEach((cell) => {
+    secretCellsAux.forEach((secretCell) => {
+      if (
+        !secretCell.checked &&
+        !cell.checked &&
+        cell.color === secretCell.color
+      ) {
+        clueBalls.push("white");
+        secretCell.checked = true;
+        cell.checked = true;
+      }
+    });
+  });
+  return clueBalls;
+}

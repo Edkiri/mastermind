@@ -17,7 +17,7 @@ export default function renderRows(rows) {
       // Crea un div, le agrega un id para identificarlo y le agrega la clase 'row'.
       const id = `row-${cell.rowPosition}-cell-${cell.position}`;
       const cellElement = createHTMLElement("div", id, ["cell"]);
-      cellElement.style.backgroundColor = cell.color;
+      cellElement.style.backgroundColor = cell.color || "#3f3f3f";
       rowElement.appendChild(cellElement);
     });
   
@@ -26,7 +26,7 @@ export default function renderRows(rows) {
     const cluesElement = createHTMLElement("div", clueId, ["clues-container"]);
     row.clues.forEach((clue) => {
       const clueElement = createHTMLElement("div", "", ["clue-cell"]);
-      clueElement.style.backgroundColor = clue.color;
+      clueElement.style.backgroundColor = clue.color || "#3f3f3f";
       cluesElement.appendChild(clueElement);
     });
     rowElement.appendChild(cluesElement);

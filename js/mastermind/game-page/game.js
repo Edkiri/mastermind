@@ -7,6 +7,7 @@ import {
   PreviusCellObserver,
   CurrentCellObserver,
   NextCellObserver,
+  RowObserver,
 } from "./observers.js";
 
 // const colors = JSON.parse(sessionStorage.getItem("colors"));
@@ -40,6 +41,7 @@ colors.forEach((color) => {
 game.subscribe(new CurrentCellObserver());
 game.subscribe(new PreviusCellObserver());
 game.subscribe(new NextCellObserver());
+game.subscribe(new RowObserver());
 
 const removeButton = document.getElementById("remove-button");
 removeButton.addEventListener("click", () => {
@@ -49,6 +51,7 @@ removeButton.addEventListener("click", () => {
 const checkButton = document.getElementById("check-button");
 checkButton.addEventListener("click", () => {
   game.checkSecret();
+  console.log(game.state);
 });
 
 game.start();

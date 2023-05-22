@@ -53,7 +53,7 @@ function createInitialCells(rowPosition) {
     const cell = {
       rowPosition,
       position: i,
-      color: "#3f3f3f",
+      color: null,
     };
     cells.push(cell);
   }
@@ -64,7 +64,7 @@ function createInitialClues() {
   const clues = [];
   for (let i = 1; i <= 4; i++) {
     const clue = {
-      color: "#3f3f3f",
+      color: null,
     };
     clues.push(clue);
   }

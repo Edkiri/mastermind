@@ -1,4 +1,5 @@
 import Subject from "../../lib/subject.js";
+import { checkClueBalls } from "../utils/functions.js";
 
 class GameState extends Subject {
   constructor(state) {
@@ -33,43 +34,24 @@ class GameState extends Subject {
   checkSecret() {
     if (this.state.currentCellPosition !== 5) return;
     const { rows } = this.state;
-    const currentCells = rows.find(
+    const currentRow = rows.find(
       (row) => row.position === this.state.currentRowPosition
-    ).cells;
-    const currentCellsAux = currentCells.map((cell) => {
-      return { ...cell, checked: false };
-    });
-    const secretCellsAux = this.state.secretRow.secretCells.map((cell) => {
-      return { ...cell, checked: false };
-    });
-    const balls = [];
-    console.log(secretCellsAux);
-    currentCellsAux.forEach((cell) => {
-      secretCellsAux.forEach((secretCell) => {
-        if (
-          cell.color === secretCell.color &&
-          cell.position === secretCell.position
-        ) {
-          balls.push("black");
-          secretCell.checked = true;
-          cell.checked = true;
-        }
-      });
-    });
-    currentCellsAux.forEach((cell) => {
-      secretCellsAux.forEach((secretCell) => {
-        if (
-          cell.color === secretCell.color &&
-          !secretCell.checked &&
-          !cell.checked
-        ) {
-          balls.push("white");
-          secretCell.checked = true;
-          cell.checked = true;
-        }
-      });
-    });
-    console.log(balls);
+    )
+    const currentCells = currentRow.cells;
+    const { secretCells } = this.state.secretRow;
+    const clueBallsList = checkClueBalls(currentCells, secretCells);
+    while(clueBallsList.length < 4) {
+      clueBallsList.push(null);
+    }
+    const { clues } = currentRow;
+    for(let i = 0; i < clueBallsList.length; i++) {
+      clues[i].color = clueBallsList[i];
+    }
+    console.log(secretCells);
+    console.log(clueBallsList);
+    this.state.currentRowPosition += 1;
+    this.state.currentCellPosition = 1;
+    super.notify(this);
   }
 
   getCell(rowPosition, cellPosition) {
