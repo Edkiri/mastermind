@@ -1,0 +1,33 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.username-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+  font-size: 2rem;
+  gap: 1.5rem;
+}
+input {
+  all: unset;
+}
+.username-form h4 {
+  text-align: center;
+}
+.username-form button {
+  margin: 0px 0.3rem;
+}
+.username-input {
+  font-size: 1.2rem;
+  outline: none;
+  background-color: var(--color-third);
+  border-radius: none;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.8rem;
+}

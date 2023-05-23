@@ -1,0 +1,62 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 200px;
+  gap: 1.5rem;
+  align-items: center;
+}
+.level-section h3 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.picker-section {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 150px;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pickers-list {
+  display: flex;
+}
+.pickers-list > input {
+  border: none;
+  background-color: transparent;
+  appearance: none;
+  height: 6rem;
+  width: 5rem;
+  margin: 0px 0.4rem;
+  cursor: pointer;
+}
+.pickers-list > input::-webkit-color-swatch {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  appearance: none;
+  border: solid var(--color-third) 0.05rem; 
+}
+.pickers-list > input::-moz-color-swatch {
+  border: none;
+}
+.picker-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.picker-section p {
+  font-size: 2.2rem;
+}
+
+
+
+#play-button:hover span {
+  color: yellow;
+}

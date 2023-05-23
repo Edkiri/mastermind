@@ -7,16 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings · Mastermind</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/settings.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <header>
-    <h1>Mastermind</h1>
-  </header>   
+    <a href="../index.html">
+      <h1>Mastermind</h1>
+    </a>
+  </header>
 
   <main>
     
@@ -28,18 +32,19 @@
         <button class="level-button mm-button" id="level-hard">Difícil</button>
         <button class="level-button mm-button" id="level-tryhard">Tryhard</button>
       </div>
+      <h2 class="new-game-title"><span class="comment">new</span> Game(<span class="string username-span"></span>)</h2>
     </section>
 
     <!-- choose colors -->
     <section id="picker-section" class="picker-section">
-      <h2><span class="comment">new</span> Game("<span class="string" id="difficulty-span"></span>", "<span class="string" id="username-span"></span>")</h2>
-      <p>Elije tus colores</p>
+      <p>Colores</p>
       <div id="pickers-list" class="pickers-list">
         <!-- Aquí se renderizan los pickers según en nivel de dificultad -->
       </div>
       <button id="play-button" class="mm-button" type="button">
         <span class="sea">jugar<span>()</span></span>
       </button>
+      <h2 class="new-game-title"><span class="comment">new</span> Game(<span class="string username-span"></span>, <span class="string" id="difficulty-span"></span>)</h2>
     </section>
 
   </main>

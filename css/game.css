@@ -1,0 +1,125 @@
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mastermind-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.mastermind-container {
+  gap: 1.5rem;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #3f3f3f;
+  border: 3px solid rgb(104, 103, 103);
+}
+.control {
+  align-self: flex-end;
+}
+.control-color {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  align-items: center;
+  margin: 0.3rem 0rem;
+}
+.cell {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 1px solid rgb(150, 150, 150);
+  margin: 0.2rem;
+  cursor: pointer;
+}
+.bubble {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  margin: 0.2rem 0rem;
+  cursor: pointer;
+}
+
+.hidden-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: white;
+  user-select: none;
+  margin-bottom: 10px;
+}
+.control-cell {
+  cursor: pointer;
+}
+.control-option-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 0.5rem;
+  gap: 0.5rem;
+  justify-self: flex-end;
+}
+.bubbles-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0px;
+}
+.clues-container {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-left: 0.8rem;
+}
+.clue-cell {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgb(150, 150, 150);
+  align-self: center;
+  justify-self: center;
+}
+
+.remove-button {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #3f3f3f;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: red;
+  border: 1px solid red;
+  transition: all .1s linear;
+}
+.check-button {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #3f3f3f;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: greenyellow;
+  border: 1px solid greenyellow;
+  transition: all .1s linear;
+}
+.check-button:disabled {
+  opacity: .3;
+  cursor: default;
+}
+.remove-button:disabled {
+  opacity: .3;
+  cursor: default;
+}

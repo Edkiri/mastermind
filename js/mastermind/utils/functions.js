@@ -46,5 +46,8 @@ export function checkClueBalls(currentCells, secretCells) {
       }
     });
   });
+  while(clueBalls.length < 4) {
+    clueBalls.push(null);
+  };
   return clueBalls;
 }

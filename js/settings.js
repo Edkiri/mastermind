@@ -3,11 +3,13 @@ const username = sessionStorage.getItem("username");
 if (!username) window.location = "../index.html";
 
 // Agraga el username al título.
-const usernameSpan = document.getElementById("username-span");
-usernameSpan.textContent = username;
+const usernameSpanLevel = document.querySelector("#level-section .username-span");
+const usernameSpanPikcer = document.querySelector("#picker-section .username-span");
+usernameSpanLevel.textContent = `"${username}"`;
+usernameSpanPikcer.textContent = `"${username}"`;
 
-// 'picker-section' es el id de la sección que contiene a los color picckers. 
-// Al iniciar tiene `display: none;` en css. Solo después de que el usuario haya elejido la 
+// 'picker-section' es el id de la sección que contiene a los color picckers.
+// Al iniciar tiene `display: none;` en css. Solo después de que el usuario haya elejido la
 // dificultad, se le dará `display: 'flex';` via js para hacerlo visible, y se rendetizaran
 // los colors pickers, según la dificultad.
 const pickersSection = document.getElementById("picker-section");
@@ -33,16 +35,16 @@ levelButtons.forEach((button) => {
     createPickers(colorsQuantity);
 
     const difficultySpan = document.getElementById("difficulty-span");
-    difficultySpan.textContent = difficulty;
+    difficultySpan.textContent = `"${difficulty}"`;
     window.sessionStorage.setItem("difficulty", difficulty);
-    
+
     levelSection.style.display = "none";
     pickersSection.style.display = "flex";
   });
 });
 
-// Estos son los colores por defecto previamente filtrados por el equipo de diseño.
-const DEFAULT_COLORS = ["#65e66e","#ffe770","#85e0ff","#ff8af5","#ff9924","#67cccc"];
+// Estos son los colores por defecto previamente filtrados por el equipo de diseño. 
+const DEFAULT_COLORS = ["#800080", "#0000FF", "#FFA500", "#008000", "#FF0000", "#FFFF00"];
 
 const pickersContainer = document.getElementById("pickers-list");
 function createPickers(quantity) {

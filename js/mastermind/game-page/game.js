@@ -8,10 +8,10 @@ import {
   CurrentCellObserver,
   NextCellObserver,
   RowObserver,
+  ControlButtonsObserver,
 } from "./observers.js";
 
-// const colors = JSON.parse(sessionStorage.getItem("colors"));
-const colors = ["red", "green", "blue", "yellow", "purple"];
+const colors = JSON.parse(sessionStorage.getItem("colors"));
 const difficulty = sessionStorage.getItem("difficulty");
 if (!colors.length || !difficulty) window.location = "../pages/settings.html";
 
@@ -42,6 +42,7 @@ game.subscribe(new CurrentCellObserver());
 game.subscribe(new PreviusCellObserver());
 game.subscribe(new NextCellObserver());
 game.subscribe(new RowObserver());
+game.subscribe(new ControlButtonsObserver());
 
 const removeButton = document.getElementById("remove-button");
 removeButton.addEventListener("click", () => {

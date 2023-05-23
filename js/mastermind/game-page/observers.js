@@ -7,7 +7,7 @@ export class CurrentCellObserver {
     if (!currentCell) return;
     const currentCellElement = getCellElement(currentCell);
     currentCellElement.style.background = currentCell.color;
-    currentCellElement.style.borderColor = "yellow";
+    currentCellElement.style.border = `3px solid yellow`;
   }
 }
 
@@ -17,7 +17,7 @@ export class NextCellObserver {
     const nextCell = game.getCell(currentRowPosition, currentCellPosition + 1);
     if (!nextCell) return;
     const nextCellElement = getCellElement(nextCell);
-    nextCellElement.style.borderColor = "black";
+    nextCellElement.style.border = "1px solid rgb(150, 150, 150)";
   }
 }
 
@@ -31,7 +31,7 @@ export class PreviusCellObserver {
     if (!previusCell) return;
     const previusCellElement = getCellElement(previusCell);
     previusCellElement.style.backgroundColor = previusCell.color;
-    previusCellElement.style.borderColor = "black";
+    previusCellElement.style.border = "none";
   }
 }
 export class RowObserver {
@@ -47,6 +47,22 @@ export class RowObserver {
         cluesElements[i].style.backgroundColor = clues[i].color || "#3f3f3f";
       }
       this.currentRowPosition += 1;
+    }
+  }
+}
+
+export class ControlButtonsObserver {
+  notify(game) {
+    const {currentCellPosition} = game.state;
+    if(currentCellPosition !== 1) {
+      document.getElementById("remove-button").disabled = false;
+    } else {
+      document.getElementById("remove-button").disabled = true;
+    }
+    if(currentCellPosition === 5) {
+      document.getElementById("check-button").disabled = false;
+    } else {
+      document.getElementById("check-button").disabled = true;
     }
   }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastermind - Rules</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/rules.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <a href="../index.html">
+      <h1>Mastermind</h1>
+    </a>
+  </header>
+
+  <main class="rules">
+    <div class="rules-description">
+      <h3>Cómo jugar?</h3>
+      <ol>
+        <li>
+          <p>
+            El objetivo del juego es adivinar la combinación secreta de 4 'bolacolores' generada 
+            aleatoriamente.
+          </p>
+        </li>
+        <li>
+          <p>Esta combinación secreta se crea de acuerdo a los colores elejidos por el jugador.</p>
+        </li>
+        <li>
+          <p>La cantidad de colores disponibles depende del nivel de dificicultad.</p>
+        </li>
+        <li>
+          <p>El jugador gana la partida acertando la posición y el color de las 'bolacolores' secretas.</p>
+        </li>
+        <li>
+          <p>
+            El jugador también tiene un número máximo de intentos según el nivel de dificultad. 
+            Una vez agotado el máximo de intentos, el jugador pierde la partida.
+          </p>
+        </li>
+        <li>
+          <p>
+            Luego de cada intento, el jugador recibe algunas pistas. Recibe una bola negra por cada acierto
+            tanto de posición y color. Recibe una bola blanca si acierta el color, pero no la posicón.
+          </p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="rules-difficulty">
+      <h3>Dificultad</h3>
+      <div class="easy">
+        <h5>Fácil</h5>
+        <p>El jugador tendrá un máximo de 10 intentos y 4 colores disponibles.</p>
+      </div>
+      <div class="hard">
+        <h5>Difícil</h5>
+        <p>8 intentas y 5 colores.</p>
+      </div>
+      <div class="tryhard">
+        <h5>Muy difícil</h5>
+        <p>Y para tryhards, 6 intentos y 6 colores disponibles.</p>
+      </div>
+    </div>
+  </main>
+
+
+</body>
+</html>

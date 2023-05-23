@@ -1,6 +1,9 @@
 const inputUsername = document.getElementById("username");
-const acceptButton = document.getElementById("accept-button");
 
+const username = sessionStorage.getItem("username");
+if (username) inputUsername.value = username;
+
+const acceptButton = document.getElementById("accept-button");
 acceptButton.addEventListener("click", () => {
   const username = inputUsername.value.trim();
   if (username) {

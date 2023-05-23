@@ -40,13 +40,10 @@ class GameState extends Subject {
     const currentCells = currentRow.cells;
     const { secretCells } = this.state.secretRow;
     const clueBallsList = checkClueBalls(currentCells, secretCells);
-    while(clueBallsList.length < 4) {
-      clueBallsList.push(null);
-    }
     const { clues } = currentRow;
     for(let i = 0; i < clueBallsList.length; i++) {
       clues[i].color = clueBallsList[i];
-    }
+    };
     console.log(secretCells);
     console.log(clueBallsList);
     this.state.currentRowPosition += 1;
