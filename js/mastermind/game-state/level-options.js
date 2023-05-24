@@ -1,14 +1,17 @@
 export const levelOptions = {
   easy: {
-    colorsQuantity: 4,
+    title: "Fácil",
     maxAttempts: 10,
+    colorsQuantity: 4,
   },
   hard: {
-    colorsQuantity: 5,
+    title: "Difícil",
     maxAttempts: 8,
+    colorsQuantity: 5,
   },
   tryhard: {
-    colorsQuantity: 6,
+    title: "Tryhard",
     maxAttempts: 6,
+    colorsQuantity: 6,
   }
 }

@@ -31,11 +31,11 @@ levelButtons.forEach((button) => {
     const buttonId = button.id;
     const difficulty = buttonId.split("-")[1];
 
-    const { colorsQuantity } = levelOptions[difficulty];
+    const { colorsQuantity, title } = levelOptions[difficulty];
     createPickers(colorsQuantity);
 
     const difficultySpan = document.getElementById("difficulty-span");
-    difficultySpan.textContent = `"${difficulty}"`;
+    difficultySpan.textContent = `"${title}"`;
     window.sessionStorage.setItem("difficulty", difficulty);
 
     levelSection.style.display = "none";

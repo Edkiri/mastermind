@@ -7,10 +7,12 @@ main {
 .mastermind-container {
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
-}
-.mastermind-container {
-  gap: 1.5rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
+  gap: 1rem;
+
 }
 .board {
   display: flex;
@@ -22,6 +24,10 @@ main {
   border: 3px solid rgb(104, 103, 103);
 }
 .control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   align-self: flex-end;
 }
 .control-color {
@@ -45,7 +51,6 @@ main {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  margin: 0.2rem 0rem;
   cursor: pointer;
 }
 
@@ -65,7 +70,6 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 0.5rem;
   gap: 0.5rem;
   justify-self: flex-end;
 }
@@ -74,7 +78,6 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1.5rem 0px;
 }
 .clues-container {
   display: grid;
@@ -94,26 +97,41 @@ main {
 }
 
 .remove-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
   background-color: #3f3f3f;
-  font-size: 1.5rem;
   cursor: pointer;
+  border: 3px solid red;
+  transition: all .1s linear;
+}
+.remove-button span {
+  font-size: 1.5rem;
   color: red;
-  border: 1px solid red;
+  font-weight: 700;
   transition: all .1s linear;
 }
 .check-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
   background-color: #3f3f3f;
-  font-size: 1.5rem;
   cursor: pointer;
-  color: greenyellow;
-  border: 1px solid greenyellow;
+  border: 3px solid greenyellow;
   transition: all .1s linear;
+  
+}
+.check-button span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all .1s linear;
+  color: greenyellow;
 }
 .check-button:disabled {
   opacity: .3;
@@ -122,4 +140,10 @@ main {
 .remove-button:disabled {
   opacity: .3;
   cursor: default;
+}
+.bubbles-list, .control-option-container {
+  gap: 0.3rem;
+}
+.bubbles-list {
+  margin-bottom: 0.3rem;
 }

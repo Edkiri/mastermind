@@ -35,7 +35,6 @@ body {
 header {
   padding: 1.5rem;
   width: 100%;
-  max-width: 850px;
   display: flex;
 }
 h1 {

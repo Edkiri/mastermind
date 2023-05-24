@@ -29,9 +29,8 @@ export default function renderRows(rows) {
       clueElement.style.backgroundColor = clue.color || "#3f3f3f";
       cluesElement.appendChild(clueElement);
     });
+    
     rowElement.appendChild(cluesElement);
-    
-    
     boardElement.appendChild(rowElement);
     
   });

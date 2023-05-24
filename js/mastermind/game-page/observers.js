@@ -45,6 +45,9 @@ export class RowObserver {
       const cluesElements = document.querySelectorAll(`#clues-${this.currentRowPosition} > div`);
       for(let i = 0; i < clues.length; i++) {
         cluesElements[i].style.backgroundColor = clues[i].color || "#3f3f3f";
+        if(clues[i].color) {
+          cluesElements[i].style.border = "none";
+        }
       }
       this.currentRowPosition += 1;
     }
