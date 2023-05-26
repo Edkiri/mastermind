@@ -22,7 +22,7 @@ const levelSection = document.getElementById("level-section");
 // Trae una lista con los 3 botones para elejir la dificultad; todos tienen la clase 'level-button'.
 const levelButtons = document.querySelectorAll(".level-button");
 
-import { levelOptions } from "./mastermind/game-state/level-options.js";
+import levels from "./mastermind/game-state/levels.js";
 // Recorre la lista con los botones usando un `.forEach()` para agregarle un `addEventListerner` a cada uno.
 levelButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -31,7 +31,7 @@ levelButtons.forEach((button) => {
     const buttonId = button.id;
     const difficulty = buttonId.split("-")[1];
 
-    const { colorsQuantity, title } = levelOptions[difficulty];
+    const { colorsQuantity, title } = levels[difficulty];
     createPickers(colorsQuantity);
 
     const difficultySpan = document.getElementById("difficulty-span");
@@ -44,7 +44,7 @@ levelButtons.forEach((button) => {
 });
 
 // Estos son los colores por defecto previamente filtrados por el equipo de diseño. 
-const DEFAULT_COLORS = ["#800080", "#0000FF", "#FFA500", "#008000", "#FF0000", "#FFFF00"];
+const DEFAULT_COLORS = ["#800080", "#008000", "#0000FF", "#FF0000", "#FFA500", "#FFFF00"];
 
 const pickersContainer = document.getElementById("pickers-list");
 function createPickers(quantity) {

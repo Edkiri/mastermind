@@ -1,18 +1,19 @@
-import { levelOptions } from "./level-options.js";
+import levels from "./levels.js";
 
-export function createInitialState(difficulty, colors) {
+export function createInitialState(username, difficulty, colors) {
   const secretRow = createSecretRow(colors);
   const rows = createInitialRows(difficulty);
-  const levelOption = levelOptions[difficulty];
-  delete levelOption.title;
   return {
-    difficulty: levelOption,
+    public: {
+      username,
+      difficulty: levels[difficulty],
+      rows,
+      victory: false,
+      loss: false,
+    },
     secretRow,
-    rows,
     currentCellPosition: 1,
     currentRowPosition: 1,
-    victory: false,
-    loss: false,
   };
 }
 
@@ -38,7 +39,7 @@ function createSecretCells(colors) {
 
 function createInitialRows(difficulty) {
   const rows = [];
-  const rowQuantity =  levelOptions[difficulty].maxAttempts;
+  const rowQuantity =  levels[difficulty].maxAttempts;
   for (let i = rowQuantity; i >= 1; i--) {
     const row = {
       position: i,

@@ -13,13 +13,6 @@ export function getCellElement(cell) {
   );
 }
 
-export function renderResultModal(modalId, title) {
-  const modal = document.getElementById(modalId);
-  const modalTitle = document.querySelector(`#${modalId} h3`);
-  modalTitle.textContent = title;
-  modal.display = "flex";
-}
-
 export function checkClueBalls(currentCells, secretCells) {
   const currentCellsAux = currentCells.map((cell) => {
     return { ...cell, checked: false };

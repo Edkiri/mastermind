@@ -1,7 +1,7 @@
 import Subject from "../../lib/subject.js";
 import { checkClueBalls } from "../utils/functions.js";
 
-class GameState extends Subject {
+class MastermindGame extends Subject {
   constructor(state) {
     super();
     this.state = state;
@@ -33,7 +33,7 @@ class GameState extends Subject {
 
   checkSecret() {
     if (this.state.currentCellPosition !== 5) return;
-    const { rows } = this.state;
+    const { rows } = this.state.public;
     const currentRow = rows.find(
       (row) => row.position === this.state.currentRowPosition
     )
@@ -46,10 +46,10 @@ class GameState extends Subject {
     };
     const blackBalls = clueBallsList.filter((clue) => clue === "black");
     if(blackBalls.length === 4) {
-      this.state.victory = true;
+      this.state.public.victory = true;
     }
-    else if(this.state.currentRowPosition === this.state.difficulty.maxAttempts) {
-      this.state.loss = true;
+    else if(this.state.currentRowPosition === this.state.public.difficulty.maxAttempts) {
+      this.state.public.loss = true;
     } else {
       this.state.currentRowPosition += 1;
       this.state.currentCellPosition = 1;
@@ -59,10 +59,10 @@ class GameState extends Subject {
 
   getCell(rowPosition, cellPosition) {
     if (!this.state.currentCellPosition) return;
-    const row = this.state.rows.find((row) => row.position === rowPosition);
+    const row = this.state.public.rows.find((row) => row.position === rowPosition);
     const cell = row.cells.find((cell) => cell.position === cellPosition);
     return cell;
   }
 }
 
-export default GameState;
+export default MastermindGame;

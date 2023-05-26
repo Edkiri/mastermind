@@ -1,6 +1,6 @@
 import { getCellElement } from "../utils/functions.js";
 
-export class CurrentCellObserver {
+class CurrentCellObserver {
   notify(game) {
     const { currentRowPosition, currentCellPosition } = game.state;
     const currentCell = game.getCell(currentRowPosition, currentCellPosition);
@@ -11,7 +11,7 @@ export class CurrentCellObserver {
   }
 }
 
-export class NextCellObserver {
+class NextCellObserver {
   notify(game) {
     const { currentRowPosition, currentCellPosition } = game.state;
     const nextCell = game.getCell(currentRowPosition, currentCellPosition + 1);
@@ -21,7 +21,7 @@ export class NextCellObserver {
   }
 }
 
-export class PreviusCellObserver {
+class PreviusCellObserver {
   notify(game) {
     const { currentRowPosition, currentCellPosition } = game.state;
     const previusCell = game.getCell(
@@ -34,13 +34,14 @@ export class PreviusCellObserver {
     previusCellElement.style.border = "none";
   }
 }
-export class RowObserver {
+
+class RowObserver {
   constructor() {
     this.currentRowPosition = 1;
   }
   notify(game) {
     if (this.currentRowPosition < game.state.currentRowPosition) {
-      const currentRow = game.state.rows.find(
+      const currentRow = game.state.public.rows.find(
         (row) => row.position === this.currentRowPosition
       );
       const { clues } = currentRow;
@@ -58,7 +59,7 @@ export class RowObserver {
   }
 }
 
-export class ControlButtonsObserver {
+class ControlButtonsObserver {
   notify(game) {
     const { currentCellPosition } = game.state;
     if (currentCellPosition !== 1) {
@@ -74,15 +75,24 @@ export class ControlButtonsObserver {
   }
 }
 
-export class VictoryOrLossObserver {
+class VictoryOrLossObserver {
   notify(game) {
-    const { victory, loss } = game.state;
+    const { victory, loss } = game.state.public;
     if (victory) {
       document.getElementById("victory-modal").style.display = "block";
     }
     if (loss) {
-      console.log("HAS PERDIDO")
+      console.log("HAS PERDIDO");
       document.getElementById("loss-modal").style.display = "block";
     }
   }
 }
+
+export default {
+  CurrentCellObserver,
+  NextCellObserver,
+  PreviusCellObserver,
+  RowObserver,
+  ControlButtonsObserver,
+  VictoryOrLossObserver,
+};

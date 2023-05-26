@@ -1,4 +1,4 @@
-export const levelOptions = {
+const levels = {
   easy: {
     title: "Fácil",
     maxAttempts: 10,
@@ -15,3 +15,5 @@ export const levelOptions = {
     colorsQuantity: 6,
   }
 }
+
+export default levels;
