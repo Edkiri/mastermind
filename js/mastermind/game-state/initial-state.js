@@ -3,13 +3,16 @@ import { levelOptions } from "./level-options.js";
 export function createInitialState(difficulty, colors) {
   const secretRow = createSecretRow(colors);
   const rows = createInitialRows(difficulty);
-  const currentRowPosition = 1;
-  const currentCellPosition = 1;
+  const levelOption = levelOptions[difficulty];
+  delete levelOption.title;
   return {
-    rows,
+    difficulty: levelOption,
     secretRow,
-    currentCellPosition,
-    currentRowPosition,
+    rows,
+    currentCellPosition: 1,
+    currentRowPosition: 1,
+    victory: false,
+    loss: false,
   };
 }
 

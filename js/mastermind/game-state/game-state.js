@@ -44,10 +44,16 @@ class GameState extends Subject {
     for(let i = 0; i < clueBallsList.length; i++) {
       clues[i].color = clueBallsList[i];
     };
-    console.log(secretCells);
-    console.log(clueBallsList);
-    this.state.currentRowPosition += 1;
-    this.state.currentCellPosition = 1;
+    const blackBalls = clueBallsList.filter((clue) => clue === "black");
+    if(blackBalls.length === 4) {
+      this.state.victory = true;
+    }
+    else if(this.state.currentRowPosition === this.state.difficulty.maxAttempts) {
+      this.state.loss = true;
+    } else {
+      this.state.currentRowPosition += 1;
+      this.state.currentCellPosition = 1;
+    }
     super.notify(this);
   }
 

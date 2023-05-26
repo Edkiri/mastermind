@@ -3,6 +3,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  position: relative;
 }
 .mastermind-container {
   display: flex;
@@ -12,7 +14,6 @@ main {
   align-items: stretch;
   margin-bottom: 2rem;
   gap: 1rem;
-
 }
 .board {
   display: flex;
@@ -45,7 +46,6 @@ main {
   border-radius: 50%;
   border: 1px solid rgb(150, 150, 150);
   margin: 0.2rem;
-  cursor: pointer;
 }
 .bubble {
   width: 3.5rem;
@@ -73,7 +73,7 @@ main {
   gap: 0.5rem;
   justify-self: flex-end;
 }
-.bubbles-list {
+.bubble-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,9 +141,54 @@ main {
   opacity: .3;
   cursor: default;
 }
-.bubbles-list, .control-option-container {
+.bubble-list, .control-option-container {
   gap: 0.3rem;
 }
-.bubbles-list {
+.bubble-list {
   margin-bottom: 0.3rem;
+}
+
+.loss-modal, .victory-modal {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  right: 0;
+  left: 0;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+.loss-container, .victory-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 3;
+  width: 80%;
+  max-width: 350px;
+  background-color: #3f3f3f;
+  top: 10vh;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+.loss-container h3, .victory-container h3 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.secret-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+.buttons-container > a {
+  text-align: center;
 }

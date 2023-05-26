@@ -21,12 +21,10 @@
 
   <main>
 
-    <div class="mastermind-container">
-
+    <div id="mastermind-container" class="mastermind-container">
       <div class="board" id="board"></div>
-
       <div class="control">
-        <div class="bubbles-list" id="bubbles-list"></div>
+        <div class="bubble-list" id="bubble-list"></div>
         <div class="control-option-container">
           <button type="button" disabled="true" class="remove-button" id="remove-button">
             <span>x</span>
@@ -35,11 +33,29 @@
             <span>✓</span>
           </button>
         </div>
-      </div> 
-      <div class="secret-list" id="secret-list"></div>
+      </div>
+    </div>
 
-      
+    <div class="loss-modal" id="loss-modal">
+      <div class="loss-container">
+        <h3>Has perdido</h3>
+        <div class="secret-list"></div>
+        <div class="buttons-container">
+          <a class="mm-button" href="./settings.html">Menú</a>
+          <a class="mm-button" href="./game.html">Nuevo juego</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="victory-modal" id="victory-modal">
+      <div class="victory-container">
+        <h3>Has perdido</h3>
+        <div class="secret-list"></div>
+        <div class="buttons-container">
+          <a class="mm-button" href="./settings.html">Menú</a>
+          <a class="mm-button" href="./game.html">Nuevo juego</a>
+        </div>
+      </div>
     </div>
 
   </main>
