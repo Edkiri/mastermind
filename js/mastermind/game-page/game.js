@@ -8,7 +8,8 @@ import observers from "./observers.js";
 const colors = JSON.parse(sessionStorage.getItem("colors"));
 const difficulty = sessionStorage.getItem("difficulty");
 const username = sessionStorage.getItem("username");
-if (!colors.length || !difficulty || !username) window.location = "./settings.html";
+if (!colors.length || !difficulty || !username)
+  window.location = "./settings.html";
 
 // Crea el estado inicial.
 // Este guarda las 'rows' del tablero según el nivel de dificultad.
@@ -27,7 +28,15 @@ renderRows(board, game.state.public.rows);
 const secretLists = document.querySelectorAll(".secret-list");
 secretLists.forEach((list) => renderSecretList(list, game.state.secretRow));
 
-// Renderiza las celdas de colores clickeables para agragar colores al tablero. 
+game.subscribe(new observers.CurrentCellObserver());
+game.subscribe(new observers.PreviusCellObserver());
+game.subscribe(new observers.NextCellObserver());
+game.subscribe(new observers.RowObserver());
+game.subscribe(new observers.ControlButtonsObserver());
+game.subscribe(new observers.VictoryOrLossObserver());
+game.start();
+
+// Renderiza las celdas de colores clickeables para agragar colores al tablero.
 const bubbleList = document.getElementById("bubble-list");
 colors.forEach((color) => {
   const bubble = createHTMLElement("button", "", ["bubble"]);
@@ -38,13 +47,6 @@ colors.forEach((color) => {
   });
 });
 
-game.subscribe(new observers.CurrentCellObserver());
-game.subscribe(new observers.PreviusCellObserver());
-game.subscribe(new observers.NextCellObserver());
-game.subscribe(new observers.RowObserver());
-game.subscribe(new observers.ControlButtonsObserver());
-game.subscribe(new observers.VictoryOrLossObserver());
-
 const removeButton = document.getElementById("remove-button");
 removeButton.addEventListener("click", () => {
   game.removeColor();
@@ -54,7 +56,3 @@ const checkButton = document.getElementById("check-button");
 checkButton.addEventListener("click", () => {
   game.checkSecret();
 });
-
-game.start();
-
-console.log(game.state)
