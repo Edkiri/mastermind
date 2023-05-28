@@ -56,3 +56,5 @@ checkButton.addEventListener("click", () => {
 });
 
 game.start();
+
+console.log(game.state)
